@@ -1,4 +1,3 @@
-from multiprocessing.dummy import Array
 import numpy as np
 import matplotlib.pyplot as plt
 import serial
@@ -11,14 +10,12 @@ TODAY = (time.asctime(t)).replace(" ","_")
 
 
 
-def get_freq(collection_period : int, log_or_plot : bool):
+def get_freq(collection_period : int):
     """Gets the frequency and calls other helper function for plotting or logging the data
 
     Args:
         collection_period (int): How long the function will collect data for in seconds
-        log_or_plot (bool): If given true the function will log the data in a csv,
-        if given false the function will plot it on a graph and not log it
-
+        
     Returns:
         int: acquired data points
     """
@@ -50,18 +47,5 @@ def get_freq(collection_period : int, log_or_plot : bool):
 
     s.write(b'STOP\n\r') 
 
-
-
-    
-
-
-"""
-def plot_freq(freq : list, times : list):
-    
-    plt.plot(times, times)
-    plt.ylabel("Frequecy")
-    plt.xlabel("Time")
-    plt.grid(True)
-    plt.show()
-"""
-get_freq(10,True)
+get_freq(10)
+#Takes readings for 10 seconds
